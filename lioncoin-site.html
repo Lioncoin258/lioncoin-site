@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lion Coin Lda</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+      scroll-behavior: smooth;
+    }
+    header {
+      background-color: #000;
+      color: #FFD700;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    nav {
+      margin-top: 0.5rem;
+    }
+    nav a {
+      color: #FFD700;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background: linear-gradient(to right, #000, #FFD700);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #fff;
+    }
+    .section {
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .section:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .section h2 i {
+      margin-right: 10px;
+      color: #FFD700;
+    }
+    .formulario input, .formulario select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .formulario button {
+      background-color: #FFD700;
+      color: #000;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .formulario button:hover {
+      background-color: #e6c200;
+    }
+    .simulador {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: #fffbea;
+      border-radius: 8px;
+      border: 1px solid #f5e17a;
+    }
+    footer {
+      background-color: #000;
+      color: #FFD700;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #FFD700;
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 5px 0;
+      }
+    }
+  </style>
+  <script>
+    function enviarParaWhatsApp(event) {
+      event.preventDefault();
+      const nome = document.querySelector('input[name="nome"]').value;
+      const valor = document.querySelector('input[name="valor"]').value;
+      const prazo = document.querySelector('select[name="prazo"]').value;
+      const whatsapp = document.querySelector('input[name="whatsapp"]').value;
+
+      if (!nome || !valor || !prazo || !whatsapp) {
+        alert("Preencha todos os campos do formulário.");
+        return;
+      }
+
+      const mensagem = `Olá, meu nome é ${nome}. Gostaria de solicitar um empréstimo de ${valor} MZN com prazo de ${prazo}. Meu WhatsApp é: ${whatsapp}`;
+      const link = `https://wa.me/258848448552?text=${encodeURIComponent(mensagem)}`;
+      window.open(link, '_blank');
+    }
+
+    function simularParcelas() {
+      const valor = parseFloat(document.getElementById('sim-valor').value);
+      const taxaFixa = 0.25;
+      const taxaTransferencia = 10;
+      if (!valor || valor < 50 || valor > 500) {
+        document.getElementById('resultado').innerText = 'Insira um valor entre 50 e 500 MZN.';
+        return;
+      }
+      const total = valor + (valor * taxaFixa) + taxaTransferencia;
+      document.getElementById('resultado').innerText = `Total a pagar: ${total.toFixed(2)} MZN (inclui 25% de juros + taxa de transferência)`;
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-coins"></i> Lion Coin Lda</h1>
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#vantagens">Vantagens</a>
+      <a href="#formulario">Solicitar</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2><i class="fas fa-hand-holding-usd"></i> Precisa de um alívio financeiro?</h2>
+    <p>A Lion Coin te ajuda com rapidez e confiança!</p>
+  </section>
+
+  <section id="servicos" class="section">
+    <h2><i class="fas fa-money-bill-wave"></i> Serviços Oferecidos</h2>
+    <ul>
+      <li>Empréstimos de 50 a 500 MZN</li>
+      <li>Pagamento em até 15 dias</li>
+      <li>Resposta rápida e descomplicada</li>
+    </ul>
+  </section>
+
+  <section id="vantagens" class="section">
+    <h2><i class="fas fa-star"></i> Por que escolher a Lion Coin?</h2>
+    <ul>
+      <li>Sem burocracia</li>
+      <li>Atendimento personalizado</li>
+      <li><i class="fab fa-whatsapp"></i> WhatsApp ativo todos os dias</li>
+    </ul>
+  </section>
+
+  <section id="formulario" class="section">
+    <h2><i class="fas fa-paper-plane"></i> Solicite seu Empréstimo</h2>
+    <p><strong>Nota:</strong> Aceitamos valores entre <strong>50 MZN</strong> e <strong>500 MZN</strong>. Juros fixos de 25% + taxa de transferência. Preencha o formulário e clique em "Pedir Empréstimo" para enviar sua solicitação pelo WhatsApp.</p>
+    <form class="formulario" onsubmit="enviarParaWhatsApp(event)">
+      <input type="text" name="nome" placeholder="Seu nome" required />
+      <input type="number" name="valor" placeholder="Valor desejado (MZN)" min="50" max="500" required />
+      <select name="prazo" required>
+        <option value="">Escolha o prazo de pagamento</option>
+        <option value="7 dias">7 dias</option>
+        <option value="15 dias">15 dias</option>
+      </select>
+      <input type="text" name="whatsapp" placeholder="Seu número WhatsApp" required />
+      <button type="submit"><i class="fab fa-whatsapp"></i> Pedir Empréstimo</button>
+    </form>
+
+    <div class="simulador">
+      <h3><i class="fas fa-calculator"></i> Simulador de Parcelas</h3>
+      <input type="number" id="sim-valor" placeholder="Valor do Empréstimo (50 - 500 MZN)" min="50" max="500" />
+      <button onclick="simularParcelas()">Simular</button>
+      <p id="resultado"></p>
+    </div>
+  </section>
+
+  <section id="contato" class="section">
+    <h2><i class="fas fa-envelope"></i> Contato</h2>
+    <p><i class="fab fa-whatsapp"></i> Fale conosco via WhatsApp:</p>
+    <p><strong>+258 84 844 8552</strong></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Lion Coin Lda. Todos os direitos reservados.</p>
+  </footer>
+
+  <button class="back-to-top" onclick="scrollToTop()">↑ Topo</button>
+</body>
+</html>
